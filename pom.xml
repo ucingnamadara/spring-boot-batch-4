@@ -49,6 +49,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.vertx/vertx-dependencies -->
+		<dependency>
+			<groupId>dev.snowdrop</groupId>
+			<artifactId>vertx-spring-boot-starter</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
