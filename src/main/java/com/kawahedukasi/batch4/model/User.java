@@ -21,4 +21,10 @@ public class User {
 
     @Column(name = "role")
     public String role;
+
+    @Column(name = "email")
+    public String email;
+
+    @Column(name = "phoneNumber")
+    public String phoneNumber;
 }
