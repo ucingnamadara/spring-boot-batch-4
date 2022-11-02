@@ -20,7 +20,7 @@ public class Batch4Application {
 	public FilterRegistrationBean<AuthFilter> filterFilterRegistrationBean(){
 		FilterRegistrationBean<AuthFilter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
 		AuthFilter authFilter = new AuthFilter();
-		filterFilterRegistrationBean.addUrlPatterns("/peserta", "/peserta/*");
+		filterFilterRegistrationBean.addUrlPatterns("/peserta", "/peserta/*", "/wilayah/*");
 		filterFilterRegistrationBean.setFilter(authFilter);
 		return filterFilterRegistrationBean;
 	}
