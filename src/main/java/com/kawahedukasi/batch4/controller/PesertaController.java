@@ -1,5 +1,6 @@
 package com.kawahedukasi.batch4.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kawahedukasi.batch4.model.dto.PesertaRequest;
 import com.kawahedukasi.batch4.service.PesertaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class PesertaController {
     PesertaService pesertaService;
 
     @PostMapping
-    public ResponseEntity<Object> post(@RequestBody PesertaRequest request){
+    public ResponseEntity<Object> post(@RequestBody PesertaRequest request) throws JsonProcessingException {
         return pesertaService.post(request);
     }
 

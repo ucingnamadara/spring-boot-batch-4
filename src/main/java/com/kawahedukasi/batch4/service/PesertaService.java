@@ -1,5 +1,6 @@
 package com.kawahedukasi.batch4.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kawahedukasi.batch4.model.Peserta;
 import com.kawahedukasi.batch4.model.dto.PesertaRequest;
 import com.kawahedukasi.batch4.model.dto.IdPesertaResponse;
@@ -19,7 +20,10 @@ public class PesertaService {
     @Autowired
     PesertaRepository pesertaRepository;
 
-    public ResponseEntity<Object> post(PesertaRequest request){
+    @Autowired
+    QuarkusService quarkusService;
+
+    public ResponseEntity<Object> post(PesertaRequest request) throws JsonProcessingException {
         Peserta peserta = new Peserta();
         peserta.name = request.name;
         peserta.address= request.address;
@@ -30,6 +34,7 @@ public class PesertaService {
         peserta.batch= request.batch;
 
         peserta = pesertaRepository.save(peserta);
+        quarkusService.sendToQuarkus(peserta);
 
         IdPesertaResponse response = new IdPesertaResponse();
         response.id = peserta.id;

@@ -1,5 +1,6 @@
 package com.kawahedukasi.batch4;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kawahedukasi.batch4.controller.PesertaController;
 import com.kawahedukasi.batch4.model.Peserta;
@@ -31,7 +32,7 @@ class Batch4ApplicationTests {
 
 	@Test
 	@Order(1)
-	public void post(){
+	public void post() throws JsonProcessingException {
 		PesertaRequest request =  new PesertaRequest();
 		request.name = "Test Dummy";
 		request.email = "testdummy@email.com";
