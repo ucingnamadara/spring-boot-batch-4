@@ -1,6 +1,7 @@
 package com.kawahedukasi.batch4.service;
 
 
+import com.kawahedukasi.batch4.exception.ValidationException;
 import com.kawahedukasi.batch4.model.User;
 import com.kawahedukasi.batch4.model.dto.Login;
 import com.kawahedukasi.batch4.repository.UserRepository;
@@ -24,7 +25,7 @@ public class AuthService {
         System.out.println(request.username);
         Optional<User> optionalUser = userRepository.findByUsername(request.username);
         if(optionalUser.isEmpty()){
-            return ResponseEntity.badRequest().body(Map.of("message", "USER_NOT_FOUND"));
+            throw new ValidationException("USER_NOT_FOUND");
         }
 
         User user = optionalUser.get();
@@ -32,7 +33,7 @@ public class AuthService {
 
 
         if(!password.equals(user.password)){
-            return ResponseEntity.badRequest().body(Map.of("message", "WRONG_PASSWORD"));
+            throw new ValidationException("WRONG_PASSWORD");
         }
 
 

@@ -1,6 +1,7 @@
 package com.kawahedukasi.batch4.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.kawahedukasi.batch4.exception.ValidationException;
 import com.kawahedukasi.batch4.model.Peserta;
 import com.kawahedukasi.batch4.model.dto.PesertaRequest;
 import com.kawahedukasi.batch4.model.dto.IdPesertaResponse;
@@ -44,7 +45,7 @@ public class PesertaService {
     public ResponseEntity<Object> getById(Long id){
         Optional<Peserta> optionalPeserta = pesertaRepository.findById(id);
         if(optionalPeserta.isEmpty()){
-            return new ResponseEntity<>("PESERTA_NOT_FOUND", HttpStatus.BAD_REQUEST);
+           throw new ValidationException("PESERTA_NOT_FOUND");
         }
 
         Peserta peserta = optionalPeserta.get();
@@ -62,7 +63,7 @@ public class PesertaService {
     public ResponseEntity<Object> put(Long id, PesertaRequest request){
         Optional<Peserta> optionalPeserta = pesertaRepository.findById(id);
         if(optionalPeserta.isEmpty()){
-            return new ResponseEntity<>("PESERTA_NOT_FOUND", HttpStatus.BAD_REQUEST);
+            throw new ValidationException("PESERTA_NOT_FOUND");
         }
 
         Peserta peserta = optionalPeserta.get();
